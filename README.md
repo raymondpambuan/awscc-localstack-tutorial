@@ -44,25 +44,26 @@ Localstack offers a comprehensive, local AWS simulation, providing developers op
 4. To launch the LocalStack instance, open a terminal in VS Code and enter `docker-compose up`. The output should contain details about the instance. The information about the running instance can also be viewed in `Docker` desktop.
 
 ## Part 2: Verify LocalStack Instance with Browser and Commandeer
-1. To verify if the LocalStack is running correctly, open a browser and enter `http://localhost:4566/_localstack/health`.
-2. Optionally, you can enter `http://localhost.localstack.cloud:4566/_localstack/swagger` to view the user interface of LocalStack with swagger.
+1. To verify if the LocalStack is running correctly, open a browser and enter `http://localhost:4566/_localstack/health`. There should be AWS services listed and its status in LocalStack. Screenshot this page.
+2. Optionally, you can enter `http://localhost.localstack.cloud:4566/_localstack/swagger` to view the user interface of LocalStack API with OpenAPI and swagger.
 3. Open `Commandeer` and set up the account. Use the following settings for configuring the account:
    - Account Type: LocalStack
    - Region: ap-southeast-1
    - LocalStack URL: http://localhost:4566
    - Keep the rest of the settings default
-4. For the name, follow the format [nickname]-awsccmu-localstack.
+4. For the name, follow the format `[nickname]-awsccmu-localstack`.
 5. Refresh Commandeer and allow firewall.
 6. In VS Code, create a new terminal and enter `aws --endpoint-url=http://localhost:4566 s3 mb s3://awscc-mu-demo` to create a local S3 bucket.
-7. Go back to Commandeer, and under `AWS > S3 > Dashboard`, there should be a bucket created.
+7. Go back to Commandeer, and under `AWS > S3 > Dashboard`, there should be a bucket created. Screenshot this page.
 8. Go back to VS Code and create a file `test.txt`. Enter any text to the file and save it.
 
 ## Part 3: Demonstrate LocalStack functionality with AWS S3
 1. In the VS Code terminal, enter `aws --endpoint-url=http://localhost:4566 s3 cp test.txt s3://awscc-mu-demo` to add the file to the local S3 bucket.
-2. In Commandeer, click refresh and verify if the text file was added.
-3. Go back to VS Code and in the terminal, enter `aws --endpoint-url=http://localhost:4566 s3 ls s3://awscc-mu-demo` to list the contents of the bucket and verify if the file was added.
+2. In Commandeer, click refresh and verify if the text file was added. View the contents of the text file and it should match with what you added. Screenshot this page.
+3. Go back to VS Code and in the terminal, enter `aws --endpoint-url=http://localhost:4566 s3 ls s3://awscc-mu-demo` to list the contents of the bucket and verify if the file was added. Screenshot this terminal.
 
 ## (Optional) Part 4: Clean up
-1. If you want to uninstall the software, type the keyboard shortcut `Win + R` and enter `appwiz.cpl`. Search for the installed applications, select the application and click `Uninstall`.
+1. In the terminal where Docker was launched, enter the keyboard shortcut `Ctrl + C` to stop the instance. Verify it by viewing Docker Desktop.
+2. If you want to uninstall the software, type the keyboard shortcut `Win + R` and enter `appwiz.cpl`. Search for the installed applications, select the application and click `Uninstall`.
 
 ![image](https://github.com/user-attachments/assets/7a25dca3-3c38-4174-b8e2-3317e259db34)
